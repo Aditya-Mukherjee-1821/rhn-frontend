@@ -6,6 +6,7 @@ def extract_and_modify_data(modifications):
     """Extracts data from Excel, modifies it based on API request."""
     # Get the absolute path
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    print(BASE_DIR)
     sourcefile = os.path.join(BASE_DIR, "data", "Data.xlsx")
 
     # Read all sheets into separate dataframes
