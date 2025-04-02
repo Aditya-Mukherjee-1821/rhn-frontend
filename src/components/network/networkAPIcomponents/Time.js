@@ -22,17 +22,17 @@ const Time = ({ setIsNextHourDisabled }) => {
     setLoading(true);
     setIsNextHourDisabled(true);
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/next_hour/");
+      const response = await axios.get("http://127.0.0.1:8000/api/time_delay/");
       const timeData = JSON.parse(response.data);
       console.log(timeData);
 
       // Store new values in state
-      setTime(timeData["time"]);
+      setTime(Math.floor(Math.abs(timeData["time"]) / 60));
       setLastRunAt(new Date().toISOString());
       setIsNextHourDisabled(false);
 
       // Save to localStorage
-      localStorage.setItem("time", timeData["time"]);
+      localStorage.setItem("time", Math.floor(Math.abs(timeData["time"]) / 60));
       localStorage.setItem("lastRunAtTime", new Date().toISOString());
     } catch (error) {
       console.log(error);
@@ -54,7 +54,7 @@ const Time = ({ setIsNextHourDisabled }) => {
       </div>
       <div className="network-api-form-input-time">
         <img id="clock-img" src={clock} alt="Clock" />
-        {time}
+        {time} minute(s)
       </div>
       <div className="network-api-form-fade-container">
         {loading ? (

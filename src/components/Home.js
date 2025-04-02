@@ -8,6 +8,7 @@ import pipe from "../img/pipe.jpeg";
 import source from "../img/source.jpeg";
 import network from "../img/network.jpeg";
 import "./misc/Card.css"
+import "./misc/Logo.css"
 
 const Home = () => {
   return (
